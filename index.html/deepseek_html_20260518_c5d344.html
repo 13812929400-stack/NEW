@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>CATCHARM · 美学搭子 | 粉灰灵感·美学共生</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1E1E2A;
+            scroll-behavior: smooth;
+        }
+
+        /* 粉灰配色方案 — 柔和温润粉 + 高级灰（源自原PPT） */
+        :root {
+            --powder-bg: #FBF9FF;
+            --soft-pink: #daadd7e4;
+            --muted-pink: #C2ABE0;
+            --gray-bg: #F7F6F9;
+            --border-light: #EBE7F2;
+            --text-dark: #1E1E2A;
+            --text-soft: #5A5A6E;
+            --accent-hover: #B39DDB;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-light);
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 52px;
+            width: auto;
+            display: block;
+            transition: transform 0.2s ease;
+        }
+        .logo img:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: var(--soft-pink);
+        }
+
+        .btn-outline-light {
+            border: 1px solid #DCDBE5;
+            padding: 8px 20px;
+            border-radius: 40px;
+            background: white;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .btn-outline-light:hover {
+            border-color: var(--soft-pink);
+            color: var(--soft-pink);
+        }
+
+        /* 成为美学搭子按钮：深色背景 + 白色字体 */
+        .btn-white-text {
+            background: #1E1E2A !important;
+            color: white !important;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            border: none;
+            transition: 0.2s;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .btn-white-text:hover {
+            background: var(--soft-pink) !important;
+            color: #1E1E2A !important;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--text-dark);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            border: none;
+            transition: 0.2s;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            background: var(--soft-pink);
+            transform: translateY(-2px);
+            color: #1E1E2A;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-dark);
+            border: 1.5px solid #DCDBE5;
+            padding: 12px 28px;
+            border-radius: 48px;
+            font-weight: 600;
+            transition: 0.2s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-secondary:hover {
+            border-color: var(--soft-pink);
+            background: #FCF8FF;
+        }
+
+        /* Hero区域 */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 48px;
+            padding: 64px 0 40px;
+            flex-wrap: wrap;
+        }
+        .hero-left {
+            flex: 1;
+        }
+        .hero-left .badge {
+            background: var(--gray-bg);
+            color: var(--soft-pink);
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 24px;
+            border: 1px solid #EEEAF5;
+        }
+        .hero-left h2 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        .hero-left h2 span {
+            color: var(--soft-pink);
+        }
+        .hero-left p {
+            font-size: 18px;
+            color: var(--text-soft);
+            line-height: 1.5;
+            margin-bottom: 24px;
+            max-width: 500px;
+        }
+        .slogan {
+            margin: 24px 0 20px;
+            padding-top: 8px;
+            border-top: 1px dashed #EFECF5;
+        }
+        .slogan-cn {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+            color: var(--text-dark);
+            background: linear-gradient(120deg, #F7F2FF, #FCF9FF);
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 60px;
+        }
+        .slogan-en {
+            font-size: 14px;
+            color: var(--text-soft);
+            margin-top: 10px;
+            font-style: italic;
+        }
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .hero-right {
+            flex: 1;
+            background: var(--gray-bg);
+            border-radius: 48px;
+            padding: 24px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-light);
+        }
+        .mock-card {
+            background: white;
+            border-radius: 24px;
+            padding: 12px;
+            width: 150px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+            text-align: center;
+            border: 1px solid #EFEDF2;
+            transition: 0.2s;
+        }
+        .mock-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--soft-pink);
+        }
+        .mock-card .img-placeholder {
+            height: 100px;
+            background: #EFECF5;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 信任条 */
+        .trust-bar {
+            background: #FEFCFE;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            padding: 28px 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .trust-item i {
+            font-size: 28px;
+            color: var(--soft-pink);
+        }
+
+        /* 分类标签 & 卡片网格 */
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 56px 0 24px 0;
+            letter-spacing: -0.3px;
+            color: var(--text-dark);
+        }
+        .categories {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .cat-card {
+            background: var(--gray-bg);
+            border-radius: 60px;
+            padding: 10px 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+            cursor: default;
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+        }
+        .cat-card i {
+            color: var(--soft-pink);
+        }
+        .grid-5 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 28px;
+            margin: 32px 0 48px;
+        }
+        .service-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: 0.25s ease;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.08);
+            border-color: var(--soft-pink);
+        }
+        .card-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            background-color: #F0EEF7;
+        }
+        .card-info {
+            padding: 18px;
+        }
+        .card-info h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .price {
+            font-weight: 700;
+            color: var(--soft-pink);
+            margin: 8px 0 6px;
+        }
+        .tag {
+            background: var(--gray-bg);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--muted-pink);
+            display: inline-block;
+        }
+
+        /* AI 区块 */
+        .ai-block {
+            background: var(--gray-bg);
+            border-radius: 48px;
+            padding: 48px 56px;
+            margin: 48px 0 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 32px;
+            border: 1px solid var(--border-light);
+        }
+        .ai-text h3 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .ai-text p {
+            font-size: 18px;
+            color: var(--text-soft);
+            max-width: 400px;
+        }
+        .ai-demo {
+            background: white;
+            border-radius: 32px;
+            padding: 12px 28px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-light);
+        }
+
+        /* 美学创作者区域 (4位) */
+        .creators {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0 20px;
+        }
+        .creator-card {
+            flex: 1;
+            background: #FEFCFE;
+            border-radius: 32px;
+            padding: 20px;
+            text-align: center;
+            min-width: 180px;
+            border: 1px solid var(--border-light);
+            transition: 0.2s;
+        }
+        .creator-card:hover {
+            border-color: var(--soft-pink);
+            background: #FEFAFD;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            background: #E8E2F0;
+            border-radius: 50%;
+            margin: 0 auto 14px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* 保障板块 */
+        .safety-grid {
+            background: var(--gray-bg);
+            border-radius: 40px;
+            padding: 40px;
+            margin: 48px 0 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+        }
+        .safety-item i {
+            font-size: 32px;
+            color: var(--soft-pink);
+        }
+        .safety-item h3 {
+            margin: 12px 0 6px;
+            font-size: 20px;
+        }
+
+        footer {
+            background: #FEFCFE;
+            margin-top: 80px;
+            padding: 48px 0 32px;
+            border-top: 1px solid var(--border-light);
+        }
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .hero-left h2 { font-size: 40px; }
+            .navbar { flex-direction: column; gap: 16px; }
+            .ai-block { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- 导航栏 LOGO 使用“修改logo为黑底白字.png” -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="修改logo为黑底白字.png" alt="CATCHARM" onerror="this.src='白字透明底.png'">
+        </div>
+        <div class="nav-links">
+            <a href="#">灵感首页</a>
+            <a href="#">美学圈</a>
+            <a href="#">AI诊断</a>
+            <a href="#">无忧担保</a>
+            <a href="#" class="btn-outline-light">登录</a>
+            <!-- “成为美学搭子” 深色背景 + 白色字体 -->
+            <a href="#" class="btn-white-text">成为美学搭子</a>
+        </div>
+    </div>
+
+    <!-- Hero 主视觉区 中英文品牌标语 -->
+    <div class="hero">
+        <div class="hero-left">
+            <div class="badge"><i class="fas fa-feather-alt" style="margin-right: 6px;"></i> 粉灰灵感 · 即刻美学</div>
+            <h2>找到你的<br><span>「美学搭子」</span></h2>
+            <div class="slogan">
+                <div class="slogan-cn">“追美、追悦、追所有点亮灵魂的光”</div>
+                <div class="slogan-en">Chase beauty, chase joy, chase all that lights up your soul.</div>
+            </div>
+            <p>连接独立摄影师、妆造师、手作人，担保交易+信用体系。毕业跟拍 | COS正片 | 汉服约拍 | 轻写真的头号选择。</p>
+            <div class="cta-group">
+                <a href="#" class="btn-primary" style="padding: 14px 32px;">开启灵感 <i class="fas fa-arrow-right"></i></a>
+                <a href="#" class="btn-secondary"><i class="fas fa-camera"></i> 发布需求</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="mock-card"><div class="img-placeholder" style="background-image: url('27046cf3118e2a0ea39867d54a2e120c.jpg');"></div><div class="tag">奶油写真</div><div class="price">¥189起</div></div>
+            <div class="mock-card"><div class="img-placeholder" style="background-image: url('86673fb5f6ed73a92780b7d382dd286b.jpg');"></div><div class="tag">穿搭造型</div><div class="price">¥129起</div></div>
+            <div class="mock-card"><div class="img-placeholder" style="background-image: url('e440b8273f1f5ace3eb7b0c48da636ce.jpg');"></div><div class="tag">次元cos</div><div class="price">¥299起</div></div>
+        </div>
+    </div>
+
+    <!-- 信任背书条 -->
+    <div class="trust-bar">
+        <div class="trust-item"><i class="fas fa-shield-heart"></i> <span>平台担保交易</span></div>
+        <div class="trust-item"><i class="fas fa-id-card"></i> <span>双重实名认证</span></div>
+        <div class="trust-item"><i class="fas fa-location-dot"></i> <span>实时轨迹共享</span></div>
+        <div class="trust-item"><i class="fas fa-headset"></i> <span>24h极速仲裁</span></div>
+        <div class="trust-item"><i class="fas fa-bell"></i> <span>SOS一键求助</span></div>
+    </div>
+
+    <!-- 风格分类 + 灵感图鉴 (5个卡片：毕业/cos/美甲/奶油写真/穿搭) -->
+    <div class="section-title">🌸 灵感图鉴 · 热门美学风格</div>
+    <div class="categories">
+        <div class="cat-card"><i class="fas fa-graduation-cap"></i> 毕业纪念</div>
+        <div class="cat-card"><i class="fas fa-mask"></i> Cosplay次元</div>
+        <div class="cat-card"><i class="fas fa-hand-sparkles"></i> 美甲手作</div>
+        <div class="cat-card"><i class="fas fa-camera"></i> 奶油写真</div>
+        <div class="cat-card"><i class="fas fa-tshirt"></i> 穿搭造型</div>
+    </div>
+
+    <div class="grid-5">
+        <!-- 1. 毕业季图片：78e32275d1155aa1140dfef7c14e829f.jpg -->
+        <div class="service-card">
+            <div class="card-img" style="background-image: url('78e32275d1155aa1140dfef7c14e829f.jpg');"></div>
+            <div class="card-info">
+                <h4>🎓 毕业季·定格青春</h4>
+                <div class="tag">学位服 / 闺蜜团</div>
+                <div class="price">¥139起/人</div>
+                <div style="font-size: 13px; color:#6C6C7A;"><i class="fas fa-star" style="color:#D9B8FF;"></i> 校园大使严选</div>
+            </div>
+        </div>
+        <!-- 2. COS图片：e440b8273f1f5ace3eb7b0c48da636ce.jpg -->
+        <div class="service-card">
+            <div class="card-img" style="background-image: url('e440b8273f1f5ace3eb7b0c48da636ce.jpg');"></div>
+            <div class="card-info">
+                <h4>🧚 COS正片·次元觉醒</h4>
+                <div class="tag">漫展跟拍 / 妆造全包</div>
+                <div class="price">¥258起</div>
+                <div style="font-size: 13px;">🏆 资深cos摄影 · 道具加持</div>
+            </div>
+        </div>
+        <!-- 3. 美甲图片：0109e02b722d2ed692fb695bee3d479f.jpg -->
+        <div class="service-card">
+            <div class="card-img" style="background-image: url('0109e02b722d2ed692fb695bee3d479f.jpg');"></div>
+            <div class="card-info">
+                <h4>💅 指尖美学·手作美甲</h4>
+                <div class="tag">穿戴甲 / 定制手绘</div>
+                <div class="price">¥79起</div>
+                <div style="font-size: 13px;">🎨 原创设计 学生价友好</div>
+            </div>
+        </div>
+        <!-- 4. 奶油写真图片：27046cf3118e2a0ea39867d54a2e120c.jpg -->
+        <div class="service-card">
+            <div class="card-img" style="background-image: url('27046cf3118e2a0ea39867d54a2e120c.jpg');"></div>
+            <div class="card-info">
+                <h4>🍰 奶油系写真 · 少女叙事</h4>
+                <div class="tag">氛围感 / 个人专辑</div>
+                <div class="price">¥359/套 (精修9张)</div>
+                <div style="font-size: 13px;">✨ 独立女摄影师 私房/校园风</div>
+            </div>
+        </div>
+        <!-- 5. 穿搭板块图片：86673fb5f6ed73a92780b7d382dd286b.jpg -->
+        <div class="service-card">
+            <div class="card-img" style="background-image: url('86673fb5f6ed73a92780b7d382dd286b.jpg');"></div>
+            <div class="card-info">
+                <h4>👗 穿搭造型·个人形象顾问</h4>
+                <div class="tag">日系/法式/通勤</div>
+                <div class="price">¥99起/套</div>
+                <div style="font-size: 13px;">🎬 资深造型师 & 衣橱规划</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI 美学诊断区块 -->
+    <div class="ai-block">
+        <div class="ai-text">
+            <h3>✨ 粉智美学·AI诊断</h3>
+            <p>一键上传照片，选择「显白」「甜酷」「清冷感」，AI算法匹配最契合你的摄影师/妆造师，告别试错成本。</p>
+            <a href="#" class="btn-primary" style="margin-top: 20px; display: inline-block;">立即体验 <i class="fas fa-robot"></i></a>
+        </div>
+        <div class="ai-demo">
+            <i class="fas fa-cloud-upload-alt" style="font-size: 46px; color: var(--soft-pink);"></i>
+            <div style="font-weight: 500;">「甜酷风 · 显白滤镜」<br><span style="font-size: 13px; color:#8A8A98;">为你推荐3位风格契合的创作者</span></div>
+        </div>
+    </div>
+
+    <!-- 美学创作者：使用第6~9张图片作为头像 -->
+    <div class="section-title" style="margin-bottom: 16px;">🌟 粉标美学创作者</div>
+    <div class="creators">
+        <!-- 第6张：0ef39c7892bc23fe45d1b1d1bc692f4f.jpg -->
+        <div class="creator-card">
+            <div class="avatar" style="background-image: url('0ef39c7892bc23fe45d1b1d1bc692f4f.jpg'); background-size: cover;"></div>
+            <h4>苏打Soda</h4>
+            <p>胶片人像/情绪记录</p>
+            <div class="price">¥189起</div>
+            <div class="tag">少女叙事者</div>
+        </div>
+        <!-- 第7张：22ba7b16da69e705142f6e5e39cc9d63.jpg -->
+        <div class="creator-card">
+            <div class="avatar" style="background-image: url('22ba7b16da69e705142f6e5e39cc9d63.jpg'); background-size: cover;"></div>
+            <h4>Aki·镜头诗人</h4>
+            <p>尼康官方合作 / 风光人像</p>
+            <div class="price">¥359起</div>
+            <div class="tag">光影大师</div>
+        </div>
+        <!-- 第8张：fcaddc94bbb7aeeac493a02ec54ecd1f.jpg -->
+        <div class="creator-card">
+            <div class="avatar" style="background-image: url('fcaddc94bbb7aeeac493a02ec54ecd1f.jpg'); background-size: cover;"></div>
+            <h4>巧心Qiao</h4>
+            <p>汉服妆造/古风摄影</p>
+            <div class="price">¥239起</div>
+            <div class="tag">圈层主理人</div>
+        </div>
+        <!-- 第9张：d8752787d0542ffffdb7fc17b748022f.jpg -->
+        <div class="creator-card">
+            <div class="avatar" style="background-image: url('d8752787d0542ffffdb7fc17b748022f.jpg'); background-size: cover;"></div>
+            <h4>Alena PHOTO</h4>
+            <p>商业/创意/时尚写真</p>
+            <div class="price">¥428起</div>
+            <div class="tag">签约创作者</div>
+        </div>
+    </div>
+
+    <!-- 安全与分层定价 -->
+    <div class="safety-grid">
+        <div class="safety-item"><i class="fas fa-tag"></i><h3>透明分层定价</h3><p>学生价¥50-200<br>质感中端¥200-800<br>大师定制¥800+</p></div>
+        <div class="safety-item"><i class="fas fa-hand-holding-heart"></i><h3>资金托管·担保</h3><p>满意后打款，纠纷先行赔付</p></div>
+        <div class="safety-item"><i class="fas fa-map-marked-alt"></i><h3>安全护盾</h3><p>定位共享 + 紧急联系人 + 背景筛查</p></div>
+        <div class="safety-item"><i class="fas fa-chart-line"></i><h3>双向信用分</h3><p>芝麻信用接入 · 行为评级</p></div>
+    </div>
+
+    <!-- 页脚 品牌标语再现 -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <img src="修改logo为黑底白字.png" alt="CATCHARM" style="height: 42px; margin-bottom: 12px;" onerror="this.src='白字透明底.png'">
+                <p style="color: var(--text-soft); font-size: 14px; margin-top: 8px;">追美、追悦、追所有点亮灵魂的光</p>
+                <p style="color: #A5A5B5; font-size: 12px; margin-top: 4px;">Chase beauty, chase joy, chase all that lights up your soul.</p>
+                <div style="margin-top: 16px; display: flex; gap: 16px;">
+                    <i class="fab fa-weixin" style="color:#5A5A6E;"></i>
+                    <i class="fab fa-xiaohongshu" style="color: var(--soft-pink);"></i>
+                    <i class="fab fa-douyin" style="color:#1E1E2A;"></i>
+                </div>
+            </div>
+            <div><h4>服务类型</h4><p>摄影约拍</p><p>妆造设计</p><p>手作/美甲</p><p>穿搭造型</p></div>
+            <div><h4>支持保障</h4><p>安心担保</p><p>纠纷仲裁</p><p>创作者入驻</p><p>校园大使计划</p></div>
+            <div><h4>关于CATCHARM</h4><p>品牌理念</p><p>合作联系</p><p>粉标团队</p><p>隐私条款</p></div>
+        </div>
+        <div style="border-top: 1px solid var(--border-light); margin-top: 48px; padding-top: 24px; text-align: center; font-size: 13px; color:#8A8A98;">
+            © 2025 CATCHARM · 连接未被满足的美学需求与未被释放的创意才华 | 粉灰灵感·美学共生
+        </div>
+    </footer>
+</div>
+
+<!-- 简单JS交互 -->
+<script>
+    (function() {
+        console.log("CATCHARM 美学搭子 — 粉灰灵感 追美追悦");
+        const btns = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-white-text');
+        btns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if(btn.innerText.includes('开启灵感')) {
+                    e.preventDefault();
+                    alert('✨ 美学之旅即将开启，登录后可查看更多创作者作品～');
+                }
+                if(btn.innerText.includes('成为美学搭子')) {
+                    e.preventDefault();
+                    alert('🤍 欢迎加入美学搭子社区！注册/登录后即可发布技能或接单。');
+                }
+                if(btn.innerText.includes('发布需求')) {
+                    e.preventDefault();
+                    alert('📷 发布美学需求，平台将为你智能匹配服务者。');
+                }
+            });
+        });
+    })();
+</script>
+
+<!-- 图片资源对应说明：
+    灵感图鉴五张：
+      - 毕业季: 78e32275d1155aa1140dfef7c14e829f.jpg
+      - COS: e440b8273f1f5ace3eb7b0c48da636ce.jpg
+      - 美甲: 0109e02b722d2ed692fb695bee3d479f.jpg
+      - 奶油写真: 27046cf3118e2a0ea39867d54a2e120c.jpg
+      - 穿搭板块: 86673fb5f6ed73a92780b7d382dd286b.jpg
+    美学创作者头像（四张）：
+      - 第六张: 0ef39c7892bc23fe45d1b1d1bc692f4f.jpg
+      - 第七张: 22ba7b16da69e705142f6e5e39cc9d63.jpg
+      - 第八张: fcaddc94bbb7aeeac493a02ec54ecd1f.jpg
+      - 第九张: d8752787d0542ffffdb7fc17b748022f.jpg
+    Logo: 修改logo为黑底白字.png / 白字透明底.png 作为备用。
+    配色粉灰，中英文标语完整，“成为美学搭子”按钮为深色底+白色字体。
+-->
+</body>
+</html>
